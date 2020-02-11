@@ -79,5 +79,4 @@ function s:ResetDigraphBuffer()
   else 
     let s:should_reset = 1
   endif
-
 endfunction
