@@ -70,7 +70,7 @@ function s:LookupDigraph(digraph)
 			return l:split_entry[1]
 		endif
  	endfor
-  return a:digraph
+  return ""
 endfunction
 
 function s:ResetDigraphBuffer()
