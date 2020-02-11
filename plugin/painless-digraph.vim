@@ -23,6 +23,7 @@ function s:EnableDigraph()
   augroup painless_digraph
     autocmd!
     autocmd InsertCharPre * call s:CharacterToDigraph()
+    autocmd TextChangedI * call s:ResetDigraphBuffer()
     autocmd InsertEnter * let s:digraph = ""
   augroup END
 endfunction
@@ -42,9 +43,11 @@ function s:ToggleDigraph()
 endfunction
 
 let s:digraph = ""
+let s:should_reset = 0
 function s:CharacterToDigraph()
   let s:digraph .= v:char
   if strlen(s:digraph) == 2
+    let s:should_reset = 0
     let v:char = s:LookupDigraph(s:digraph)
     let s:digraph = ""
   else
@@ -68,4 +71,13 @@ function s:LookupDigraph(digraph)
 		endif
  	endfor
   return a:digraph
+endfunction
+
+function s:ResetDigraphBuffer()
+  if s:should_reset
+    let s:digraph = ""
+  else 
+    let s:should_reset = 1
+  endif
+
 endfunction
