@@ -1,25 +1,26 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "  Plugin: painless-digraph
 "    File: plugin/painless-digraph.vim
-" Summary: input digraphs without additional keypresses
+" Summary: input digraphs without additional special characters
 "  Author: DrCracket
 " Version: 0.1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 if !hasmapto('<Plug>PainlessdigraphEnable')
-  map <unique> <Leader>de  <Plug>(PainlessdigraphEnable)
+  map <silent> <Leader>de  <Plug>(PainlessdigraphEnable)
 endif
 if !hasmapto('<Plug>PainlessdigraphToggle')
-  map <unique> <Leader>dd  <Plug>(PainlessdigraphDisable)
+  map <silent> <Leader>dd  <Plug>(PainlessdigraphDisable)
 endif
 if !hasmapto('<Plug>PainlessdigraphToggle')
-  map <unique> <Leader>dt  <Plug>(PainlessdigraphToggle)
+  map <silent> <Leader>dt  <Plug>(PainlessdigraphToggle)
 endif
-noremap <unique> <script> <Plug>(PainlessdigraphEnable)  :call <SID>EnableDigraph()<CR>
-noremap <unique> <script> <Plug>(PainlessdigraphDisable) :call <SID>DisableDigraph()<CR>
-noremap <unique> <script> <Plug>(PainlessdigraphToggle)  :call <SID>ToggleDigraph()<CR>
 
-function s:EnableDigraph()
+noremap <Plug>(PainlessdigraphEnable)  :call <SID>EnableDigraph()<CR>
+noremap <Plug>(PainlessdigraphDisable) :call <SID>DisableDigraph()<CR>
+noremap <Plug>(PainlessdigraphToggle)  :call <SID>ToggleDigraph()<CR>
+
+function! s:EnableDigraph()
   augroup painless_digraph
     autocmd!
     autocmd InsertCharPre * call s:CharacterToDigraph()
@@ -28,13 +29,13 @@ function s:EnableDigraph()
   augroup END
 endfunction
 
-function s:DisableDigraph()
+function! s:DisableDigraph()
   augroup painless_digraph
     autocmd!
   augroup END
 endfunction
 
-function s:ToggleDigraph()
+function! s:ToggleDigraph()
   if exists('#painless_digraph#InsertEnter')
     call s:DisableDigraph()
   else
@@ -44,7 +45,7 @@ endfunction
 
 let s:digraph = ""
 let s:should_reset = 0
-function s:CharacterToDigraph()
+function! s:CharacterToDigraph()
   let s:digraph .= v:char
   if strlen(s:digraph) == 2
     let s:should_reset = 0
@@ -55,7 +56,7 @@ function s:CharacterToDigraph()
   endif
 endfunction
 
-function s:GetDigraphTable()
+function! s:GetDigraphTable()
 	redir => table
     silent digraphs
 	redir END
@@ -73,7 +74,7 @@ function s:LookupDigraph(digraph)
   return ""
 endfunction
 
-function s:ResetDigraphBuffer()
+function! s:ResetDigraphBuffer()
   if s:should_reset
     let s:digraph = ""
   else 
