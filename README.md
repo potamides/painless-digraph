@@ -12,6 +12,16 @@ The *painless-digraph* plugin relieves you from this pain and provides a
 digraph-mode which allows you to enter digraphs directly, without additional
 keypresses.
 
+## Installation
+
+You can install this plugin using any vim plugin manager by using the path on
+GitHub for this repository. For
+[vim-plug](https://github.com/junegunn/vim-plug) just add the following:
+
+```vim
+Plug 'DrCracket/painless-digraph'
+```
+
 ## Mappings
 
 ### Internal Mappings
@@ -29,11 +39,10 @@ Disables the painless-digraph digraph-mode.
 
 Toggles the painless-digraph digraph-mode.
 
-
 ### Default Mappings
 
 The default mappings of this plugin are as follows: 
-```vimscript
+```vim
   map <silent> <Leader>de  <Plug>(PainlessdigraphEnable)
   map <silent> <Leader>dd  <Plug>(PainlessdigraphDisable)
   map <silent> <Leader>dt  <Plug>(PainlessdigraphToggle)
