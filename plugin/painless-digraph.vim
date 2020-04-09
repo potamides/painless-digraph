@@ -1,10 +1,9 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "  Plugin: painless-digraph
 "    File: plugin/painless-digraph.vim
-" Summary: input digraphs without additional special characters
+" Summary: less painful way to input a sequence of digraphs in vim
 "  Author: DrCracket
-" Version: 0.1
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 if !hasmapto('<Plug>PainlessdigraphEnable')
   map <silent> <Leader>de  <Plug>(PainlessdigraphEnable)
