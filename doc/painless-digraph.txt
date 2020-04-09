@@ -22,7 +22,7 @@ Vim |digraphs| provide a useful mechanism to enter special characters normally
 not found on a keyboard. But since the methods to enter digraphs require
 additional keypresses, it becomes tedious to input sequences or short phrases
 (e.g. in hiragana, katakana or greek).
-The *painless-digraph* plugin relieves you from this pain and provides a
+The painless-digraph plugin relieves you from this pain and provides a
 digraph-mode which allows you to enter digraphs directly, without additional
 keypresses.
 
