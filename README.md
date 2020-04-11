@@ -1,6 +1,4 @@
 # painless-digraph
-*painless-digraph* provides you with a less painful way to input a sequence of
-digraphs in vim.
 
 ## Intro
 
