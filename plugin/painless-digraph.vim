@@ -2,7 +2,7 @@
 "  Plugin: painless-digraph
 "    File: plugin/painless-digraph.vim
 " Summary: less painful way to input a sequence of digraphs in vim
-"  Author: DrCracket
+"  Author: potamides
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 if !hasmapto('<Plug>PainlessdigraphEnable')
@@ -56,20 +56,20 @@ function! s:CharacterToDigraph()
 endfunction
 
 function! s:GetDigraphTable()
-	redir => table
+  redir => table
     silent digraphs
-	redir END
+  redir END
   return split(table, '\_s\+\_d\+\_s\+')
 endfunction
 
 let s:digraph_table = s:GetDigraphTable()
 function s:LookupDigraph(digraph)
-	for entry in s:digraph_table
+  for entry in s:digraph_table
     let l:split_entry = split(entry)
-		if l:split_entry[0] ==# a:digraph
-			return l:split_entry[1]
-		endif
- 	endfor
+    if l:split_entry[0] ==# a:digraph
+      return l:split_entry[1]
+    endif
+  endfor
   return ""
 endfunction
 

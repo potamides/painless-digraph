@@ -17,7 +17,7 @@ GitHub for this repository. For
 [vim-plug](https://github.com/junegunn/vim-plug) just add the following:
 
 ```vim
-Plug 'DrCracket/painless-digraph'
+Plug 'potamides/painless-digraph'
 ```
 
 ## Mappings
