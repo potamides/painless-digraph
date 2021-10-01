@@ -59,15 +59,21 @@ function! s:GetDigraphTable()
   redir => table
     silent digraphs
   redir END
-  return split(table, '\_s\+\_d\+\_s\+')
+  return map(
+    \  split(table, '\_s\+\_d\+\_s\+\zs'),
+    \  {_, str -> [strcharpart(str, 0, 2), nr2char(strgetchar(str, 3))]}
+    \)
 endfunction
 
-let s:digraph_table = s:GetDigraphTable()
+let s:digraph_table = []
 function s:LookupDigraph(digraph)
+  if empty(s:digraph_table)
+    let s:digraph_table = s:GetDigraphTable()
+  endif
   for entry in s:digraph_table
-    let l:split_entry = split(entry)
-    if l:split_entry[0] ==# a:digraph
-      return l:split_entry[1]
+    if l:entry[0] ==# a:digraph
+      echo l:entry
+      return l:entry[1]
     endif
   endfor
   return ""
