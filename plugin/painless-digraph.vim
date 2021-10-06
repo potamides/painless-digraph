@@ -72,7 +72,6 @@ function s:LookupDigraph(digraph)
   endif
   for entry in s:digraph_table
     if l:entry[0] ==# a:digraph
-      echo l:entry
       return l:entry[1]
     endif
   endfor
